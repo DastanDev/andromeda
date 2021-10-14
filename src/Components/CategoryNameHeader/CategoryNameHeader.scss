@@ -1,0 +1,32 @@
+.category-name-header {
+  color: #ffffff;
+  border-left: #d8e8ff solid 1px;
+  margin-top: 30px;
+  &__title {
+    font-family: 'Sansation';
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 22px;
+    letter-spacing: 0.01em;
+    color: #ffffff;
+    padding-left: 15px;
+  }
+  &__content {
+    border-top: #d8e8ff solid 1px;
+    padding-top: 15px;
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  &__subtitle {
+    font-family: Saira;
+    font-size: 16px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #d8e8ff;
+    span {
+      font-weight: 600;
+    }
+  }
+}

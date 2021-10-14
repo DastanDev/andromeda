@@ -1,0 +1,146 @@
+.litepaper {
+  position: relative;
+  img {
+    width: calc(100% + 60px);
+    margin: 0 -30px;
+  }
+  .BtnCta {
+    margin-top: 40px;
+  }
+  #litepaper {
+    position: absolute;
+    top: -80px;
+  }
+}
+
+@media (min-width: 768px) {
+  .litepaper {
+    height: 100%;
+    img {
+      position: absolute;
+      width: 50%;
+      left: 0;
+      display: block;
+      max-width: 900px;
+      bottom: 34%;
+    }
+    .BtnCta {
+      margin-left: unset;
+      margin-right: unset;
+      margin-bottom: 30px;
+    }
+    .category_name {
+      width: 75%;
+    }
+    .litepaper_text {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .litepaper_first_p {
+      width: 49%;
+      margin-top: 60px;
+    }
+    .litepaper_second_p {
+      margin-top: 80px;
+    }
+  }
+}
+@media (min-width: 850px) {
+  .litepaper {
+    .category_name {
+      margin-bottom: 60px;
+    }
+  }
+}
+@media (min-width: 900px) {
+  .litepaper {
+    .litepaper_wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    img {
+      bottom: unset;
+    }
+    .category_name {
+      width: 49%;
+      margin-bottom: 26px;
+    }
+    .litepaper_first_p {
+      margin-top: unset;
+    }
+    .litepaper_second_p {
+      margin-top: unset;
+      width: 49%;
+    }
+    .see_more_lite_paper {
+      width: 49%;
+    }
+  }
+}
+@media (min-width: 1100px) {
+  .litepaper {
+    img {
+      bottom: 0;
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .litepaper {
+    .litepaper_text {
+      display: unset;
+    }
+    .litepaper_first_p {
+      width: 100%;
+    }
+    .litepaper_second_p {
+      width: 100%;
+    }
+    .container {
+      display: flex;
+      flex-direction: row-reverse;
+    }
+    .litepaper_wrapper {
+      width: 50%;
+    }
+    .BtnCta {
+      margin-top: 64px;
+    }
+    .category_name {
+      width: unset;
+    }
+    .litepaper_wrapper {
+      width: 47%;
+    }
+    .see_more_lite_paper {
+      width: 100%;
+    }
+  }
+}
+@media (min-width: 1500px) {
+  .litepaper {
+    img {
+      top: unset;
+    }
+  }
+}
+@media (min-width: 1600px) {
+  .litepaper {
+    .container {
+      padding-bottom: 100px;
+    }
+  }
+}
+@media (min-width: 1700px) {
+  .litepaper {
+    .container {
+      padding-top: 50px;
+    }
+  }
+}
+@media (min-width: 1900px) {
+  .litepaper {
+    height: 815px;
+  }
+}

@@ -1,0 +1,55 @@
+.andromedatokeninformation {
+  img {
+    display: block;
+    width: 70px;
+    margin: 60px auto;
+    margin-bottom: 0;
+  }
+  a {
+    cursor: pointer;
+  }
+  ul {
+    padding-left: 30px;
+    margin-top: -16px;
+  }
+  p {
+    font-size: 15px;
+  }
+  strong {
+    font-style: normal;
+    font-weight: 500;
+  }
+  h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 19px;
+  }
+  h3 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  @media (min-width: 500px) {
+    .br_to_delete {
+      display: none;
+    }
+  }
+  @media (min-width: 1200px) {
+    img {
+      margin-top: 75px;
+      margin-bottom: 100px;
+    }
+    h2 {
+      font-size: 22px;
+    }
+    h3 {
+      font-size: 17px;
+    }
+    p {
+      font-size: 17px;
+    }
+    .container {
+      padding-right: 100px;
+    }
+  }
+}

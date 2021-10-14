@@ -1,0 +1,318 @@
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(
+          #{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)})
+        );
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
+}
+
+.tokenomics {
+  position: relative;
+  #tokenomics {
+    position: absolute;
+    top: -80px;
+  }
+  .category_name {
+    h2 {
+      &::before {
+        height: 140px;
+      }
+    }
+    h3 {
+      &::before {
+        background-color: #001838;
+      }
+    }
+  }
+  .br_to_space {
+    display: none;
+  }
+  &__tooltip {
+    padding: 5px;
+    background-color: #001838;
+    color: #d8e8ff;
+    position: absolute;
+    right: 30px;
+    top: 80px;
+    font-size: 13px;
+    // display: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    &--active {
+      // display: block;
+      opacity: 1;
+    }
+  }
+  .contact_number {
+    display: flex;
+    flex-direction: column;
+    inline-size: calc(100% - 80px);
+    width: 65%;
+    p {
+      margin: 0;
+      &:last-child {
+        font-style: normal;
+        color: #7f9bc4 !important;
+        font-size: 14px;
+        font-weight: 400;
+        padding-left: 0;
+      }
+    }
+  }
+  .andromeda_token {
+    width: 100%;
+    height: 80px;
+    border: 1px solid #001838;
+    padding-left: 15px;
+    margin-top: 15px;
+    line-height: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    p {
+      font-family: 'Sansation';
+      font-size: 15px;
+      font-weight: 900;
+      color: #001838;
+    }
+    a,
+    .contract_btn {
+      text-decoration: none;
+      display: block;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      cursor: pointer;
+      width: 105px;
+      height: 73px;
+      background-color: #d8e8ff;
+      border: none;
+      color: #001838;
+      font-weight: 900;
+      font-size: 15px;
+      &:hover {
+        background-color: #f1c2c7;
+      }
+      &:active {
+        background-color: #001838;
+        color: #7f9bc4;
+      }
+    }
+    .token_number {
+      font-size: 13px;
+      inline-size: 100%;
+      overflow-wrap: break-word;
+      padding-left: 5px;
+      padding-right: 5px;
+    }
+    strong {
+      font-style: normal;
+      color: #7f9bc4;
+      font-size: 14px;
+      font-weight: 400;
+      margin-top: 10px;
+    }
+  }
+  .andromeda_token_with_btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .contract_btn {
+    position: relative;
+    background-image: url(../Tokenomics/images/Icon_Scan.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 105px;
+  }
+  &__wrapp {
+    margin: 0 -30px;
+    margin-top: 30px;
+    width: calc(100% + 60px);
+    margin-bottom: -10px;
+  }
+  &__map {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  &__img {
+    max-width: 100%;
+  }
+  &__andromeda-gal {
+    position: absolute;
+    width: 24%;
+    top: 24%;
+    right: 18%;
+  }
+  &__milkiway-gal {
+    position: absolute;
+    left: 15%;
+    width: 23%;
+    top: 59%;
+  }
+  &__tokenship-total {
+    position: absolute;
+    top: 11%;
+    left: 20%;
+    width: 80%;
+  }
+  &__balance-p2 {
+    position: relative;
+    height: 100%;
+  }
+  &__balance-wrapper {
+    position: absolute;
+    left: 4%;
+    width: 36%;
+    top: 50%;
+    height: 10%;
+  }
+  &__amount {
+    color: #d8e8ff;
+    position: absolute;
+    top: 45%;
+    left: 22%;
+    // font-size: 8px;
+    @include fluid-type(360px, 1920px, 8px, 14px);
+  }
+  .container {
+    padding-bottom: 0;
+  }
+  .total {
+    margin-top: -15px;
+  }
+}
+@media (min-width: 768px) {
+  .tokenomics {
+    position: relative;
+    min-height: 750px;
+    .token_tabeles {
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .container {
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-end;
+      flex-direction: column;
+      padding-bottom: 10%;
+      padding-top: 80px;
+    }
+    .category_name_wrapper {
+      display: flex;
+      align-self: flex-start;
+      width: 75%;
+    }
+    .andromeda_token {
+      width: 100%;
+    }
+    .category_name {
+      max-width: 570px;
+    }
+    .tokenomics_table_wrapper {
+      display: flex;
+      width: 47%;
+    }
+    &__wrapp {
+      position: absolute;
+      width: 46%;
+      left: 0;
+      display: block;
+      max-width: 900px;
+      bottom: 0;
+    }
+  }
+}
+@media (min-width: 850px) {
+  .tokenomics {
+    .category_name_wrapper {
+      align-self: flex-end;
+      width: 47%;
+    }
+    .category_name {
+      max-width: 460px;
+    }
+    .container {
+      padding-bottom: 5%;
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .tokenomics {
+    .andromeda_token {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .contract_btn {
+        width: 180px;
+      }
+    }
+    .first_two {
+      padding-right: 40px;
+    }
+    .br_to_delete {
+      display: none;
+    }
+    .br_to_space {
+      display: unset;
+    }
+    .contact_number {
+      width: 60%;
+    }
+    .andromeda_token {
+      strong {
+        font-size: 15px;
+      }
+      a {
+        font-size: 16px;
+        width: 180px;
+      }
+    }
+    img {
+      bottom: 0;
+    }
+    .category_name {
+      max-width: 570px;
+    }
+    .total {
+      margin: 0;
+    }
+  }
+}
+@media (min-width: 1600px) {
+  .tokenomics {
+  }
+}
+.container {
+  padding-top: 180px;
+}
+@media (min-width: 1900px) {
+  .tokenomics {
+    height: 900px;
+    .category_name {
+      max-width: 700px;
+    }
+    .category_name_wrapper {
+      margin-top: 100px;
+    }
+  }
+}

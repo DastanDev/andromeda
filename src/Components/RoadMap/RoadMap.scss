@@ -1,0 +1,284 @@
+.roadmap {
+  background: url(../../Assets/photos/Img_04.jpeg) center/cover;
+  background-position: right center;
+  z-index: 1;
+  position: relative;
+  height: 790px;
+  #roadmap {
+    position: absolute;
+    top: -80px;
+  }
+  h2 {
+    color: #ffffff;
+    &::after {
+      background-color: #d8e8ff;
+    }
+    &::before {
+      background-color: #d8e8ff;
+      height: 140px;
+    }
+  }
+  h3 {
+    color: #d8e8ff;
+    &::before {
+      background-color: #d8e8ff;
+    }
+  }
+  .milkyway {
+    display: none;
+  }
+  .slick-slider {
+    position: unset !important;
+  }
+  &__wraper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__ruler {
+    display: none;
+  }
+  .tokenship_buttons {
+    width: 50%;
+    img {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .container {
+    &__information {
+      font-size: 10px;
+      text-align: center;
+    }
+  }
+  .roadmap_btn {
+    margin-top: 50px;
+    margin-left: 44px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    a {
+      cursor: pointer;
+    }
+  }
+  .month_column {
+    display: flex;
+    flex-direction: column;
+    z-index: 0;
+    width: 50%;
+    min-width: 180px;
+  }
+  &__wrap {
+    overflow-x: scroll;
+    min-height: unset;
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .ruler_astro {
+    margin-top: 90px;
+    width: 1710px;
+  }
+  .roadmap_content {
+    display: flex;
+    justify-content: space-between;
+    max-height: 480px;
+    overflow: hidden;
+  }
+  .n01 {
+    margin-top: -60px;
+    max-width: 190px;
+    p,
+    span {
+      color: #d8e8ff;
+      margin-bottom: 0;
+    }
+    .number_time {
+      font-size: 10px;
+      margin-bottom: 40px;
+    }
+    ul {
+      color: #d8e8ff;
+      width: 190px;
+      padding: 20px;
+      padding-top: 0;
+      margin-top: 0;
+      li {
+        font-size: 12px;
+      }
+    }
+    &--active {
+      transform: translateY(-5%);
+      transition: all 0.5s;
+      p,
+      span {
+        color: #f1c2c7;
+        font-size: 16px !important;
+        transition: all 0.5s;
+      }
+      ul {
+        li {
+          color: #f1c2c7;
+          // width: 170px;
+
+          font-size: 14px !important;
+          transition: all 0.5s;
+        }
+      }
+    }
+  }
+  .category_name {
+    max-width: 700px;
+  }
+  .time_title {
+    display: flex;
+  }
+  .category_name {
+    margin-bottom: 60px;
+  }
+}
+@media (min-width: 768px) {
+  .roadmap {
+    &__wrap {
+    }
+    .container {
+      padding-top: 80px;
+      &__information {
+        font-size: 16px;
+      }
+    }
+  }
+}
+@keyframes pulse {
+  50% {
+    transform: scale(1.1) translateY(-50%);
+  }
+  to {
+    transform: scale(1) translateY(-50%);
+  }
+}
+@media (min-width: 1200px) {
+  .roadmap {
+    height: unset;
+    .container {
+      padding-left: 40px;
+      padding-right: 40px;
+    }
+    &__wrap {
+      min-height: 460px;
+    }
+    min-height: 100vh;
+    .milkyway {
+      display: unset;
+      &__cta {
+        position: absolute;
+        top: 42%;
+        left: 7%;
+        transform: translateY(-50%);
+        animation: pulse 1s infinite linear;
+      }
+      &__dots {
+        width: 100%;
+      }
+      &__wrap {
+        position: relative;
+        .planet {
+          transform: translate(-50%, -70%);
+        }
+        .planet:nth-child(2) {
+          top: 50%;
+          left: 2%;
+        }
+        .planet:nth-child(3) {
+          top: 82%;
+          left: 8%;
+          .planet__text {
+            margin-left: 15px;
+          }
+        }
+        .planet:nth-child(4) {
+          top: 95%;
+          left: 23%;
+          .planet__text {
+            margin-left: 15px;
+          }
+        }
+        .planet:nth-child(5) {
+          top: 87%;
+          left: 40%;
+          .planet__text {
+            margin-left: 15px;
+          }
+        }
+        .planet:nth-child(6) {
+          top: 43%;
+          left: 48%;
+          .planet__text {
+            margin-left: -15px;
+          }
+        }
+        .planet:nth-child(7) {
+          top: 6%;
+          left: 59%;
+        }
+        .planet:nth-child(8) {
+          top: -3%;
+          left: 75%;
+        }
+        .planet:nth-child(9) {
+          top: 5%;
+          left: 90%;
+        }
+        .planet:nth-child(10) {
+          top: 50%;
+          right: 0%;
+          transform: translate(0, -50%);
+          .planet__text {
+            margin-left: -55px;
+          }
+        }
+      }
+      &__tokenship {
+        top: 20%;
+        left: -200px;
+        transition: all 1s cubic-bezier(0.62, 0.16, 0.24, 0.8);
+        img {
+          transform: scale(0.7) !important;
+        }
+      }
+    }
+    &__ruler {
+      display: unset;
+    }
+    &__wraper {
+      display: none;
+      min-height: calc(100vh - 80px);
+    }
+  }
+}
+@media (min-width: 1800px) {
+  .roadmap {
+    &__wrap {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+@media (min-width: 1920px) {
+  .roadmap {
+    .milkyway {
+      &__wrap {
+        margin-top: -75px;
+      }
+      &__tokenship {
+        img {
+          transform: scale(1) !important;
+        }
+      }
+    }
+  }
+}

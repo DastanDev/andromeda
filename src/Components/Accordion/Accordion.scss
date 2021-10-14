@@ -1,0 +1,210 @@
+$cAccent: #3978ef;
+$cBlack: #f1c2c7;
+$cGray: #d8e8ff;
+$cLightGray: rgba(#000, 0.1);
+
+.accordion-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  max-width: 30rem;
+  border-radius: 0.4rem;
+  overflow: hidden;
+  &__item {
+    & + & {
+      border-top: 1px solid $cLightGray;
+    }
+  }
+}
+
+.accordion-item {
+  $self: &;
+
+  &--opened {
+    #{ $self }__icon {
+      transform: rotate(180deg);
+    }
+
+    #{ $self }__inner {
+      max-height: 100rem;
+      transition-timing-function: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+      transition-duration: 0.5s;
+      transition-property: max-height;
+    }
+
+    #{ $self }__content {
+      opacity: 1;
+      transform: translateY(0);
+      transition-delay: 0.2s;
+      transition-timing-function: ease-in-out;
+      transition-duration: 0.2s;
+      transition-property: opacity, transform;
+    }
+  }
+
+  &__line {
+    display: block;
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+    z-index: 2;
+    position: relative;
+  }
+
+  &__title {
+    font-size: 30px;
+    margin: 0;
+    font-weight: 700;
+    color: $cBlack;
+    position: relative;
+    font-family: 'Sansation';
+    &::after {
+      position: absolute;
+      content: '\2039';
+      color: #f1c2c7;
+      font-size: 40px;
+      font-weight: bold;
+      right: -25px;
+      top: -10px;
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__icon {
+    width: 1.2rem;
+    height: 1.2rem;
+    transition: transform 0.3s ease-in-out;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAQAAABIkb+zAAABGklEQVR4Ae3RAcZCQRiF4buDfwshBGi+2UQgcIGAVtpSIuS/KyilG+UTcbk6zIH3GQBm3mM6AAAAAAAAAACA+eqf/yZBXcV/2XeCVPYx1FXj/FjGUMd45AQp/1HHGGLZNL+e61jHnKDmv8652YT1IvPfE2LX/Sh27/ycsF60yT/lk58JYn6eU4MJccjnlAmZ/33i0OAH4jg9Qcw/5g9YJpS+m6n0xvzpCfVe+nn59S7kGyYo+YYJWz3fO+E2PaFs9XzPhMy/6fmWCXq+YUJs9HzrhLh+JsQmrnq+bYKeb52g53snXPR88wQ93z9Bz/dP0PP9E/R89wQ93zpBz7dO0POtE/R86wQ93zpBzzdP+MoHAAAAAAAAAADAExTnTW20AtjhAAAAAElFTkSuQmCC);
+    opacity: 0.6;
+  }
+
+  &__inner {
+    max-height: 0;
+    overflow: hidden;
+    text-transform: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    transition-duration: 0.5s;
+    transition-property: max-height;
+    z-index: 1;
+    position: relative;
+  }
+
+  &__content {
+    opacity: 0;
+    transform: translateY(-1rem);
+    transition-timing-function: linear, ease;
+    transition-duration: 0.1s;
+    transition-property: opacity, transform;
+    transition-delay: 0.5s;
+    padding: 0 50px 1.2rem;
+  }
+
+  &__paragraph {
+    margin: 0;
+    font-size: 17px;
+    color: $cGray;
+    font-weight: 300;
+    margin-top: 30px;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: url(./Images/location.svg);
+      background-repeat: no-repeat;
+      left: -30px;
+      top: 6px;
+    }
+  }
+  &__phone_num {
+    margin: 0;
+    font-size: 17px;
+    color: $cGray;
+    font-weight: 300;
+    margin-top: 30px;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: url(./Images/mail.svg);
+      background-repeat: no-repeat;
+      left: -30px;
+      top: 5px;
+    }
+  }
+  &__mail {
+    margin: 0;
+    font-size: 17px;
+    color: $cGray;
+    font-weight: 300;
+    margin-top: 30px;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: url(./Images/mail.svg);
+      background-repeat: no-repeat;
+      left: -30px;
+      top: 5px;
+    }
+  }
+}
+@media (min-width: 768px) {
+  .accordion-item {
+    &__paragraph {
+      font-size: 15px;
+    }
+    &__phone_num {
+      font-size: 15px;
+    }
+    &__mail {
+      font-size: 15px;
+    }
+    &__content_menu {
+      ul {
+        margin-top: 30px;
+      }
+    }
+    &__content {
+      padding-right: 0;
+    }
+    &__title {
+      font-size: 20px;
+    }
+  }
+  .accordion-list {
+    width: 230px;
+  }
+}
+@media (min-width: 992px) {
+  .accordion-list {
+    width: unset;
+  }
+}
+@media (min-width: 1200px) {
+  .accordion-item {
+    &__title {
+      font-size: 30px;
+    }
+    &__paragraph {
+      font-size: 17px;
+    }
+    &__phone_num {
+      font-size: 17px;
+      margin-top: 40px;
+    }
+    &__mail {
+      font-size: 17px;
+      margin-top: 40px;
+    }
+  }
+}

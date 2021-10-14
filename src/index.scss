@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@400;500;700&display=swap');
+
+@font-face {
+  font-family: 'Sansation';
+  font-weight: 500;
+  src: local('Sansation'), url(./Assets/Font/sansation/Sansation-Regular.ttf);
+}
+@font-face {
+  font-family: 'Sansation';
+  font-weight: 900;
+  src: local('Sansation-Bold'), url(./Assets/Font/sansation/Sansation-Bold.ttf);
+}
+
+@font-face {
+  font-family: 'Sansation';
+  font-weight: 400;
+  src: local('Sansation-Light') url(./Assets/Font/sansation/Sansation-Light.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Saira', sans-serif;
+  scroll-behavior: smooth;
+}
+p {
+  color: #525252;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #fcfdff;
+}
+.container {
+  min-width: 360px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 60px 30px;
+}
+.category_name {
+  font-size: 20px;
+  font-family: 'Sansation';
+  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 26px;
+}
+@media (min-width: 768px) {
+  .container {
+    padding: 40px 40px;
+  }
+}
+@media (min-width: 1200px) {
+  .container {
+    padding: 40px 105px;
+  }
+}
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1920px;
+  }
+}

@@ -1,0 +1,89 @@
+.wrapper {
+  padding: 32px;
+}
+
+.cookie-container {
+  position: fixed;
+  z-index: 999;
+  bottom: -100%;
+  left: 0;
+  right: 0;
+  background-color: #03356c;
+  color: #f5f6fa;
+  padding: 0px 10px;
+  box-shadow: 0 -2px 16px rgba(47, 54, 64, 0.39);
+  transition: 400ms;
+}
+.cookie-container.active {
+  bottom: 0;
+}
+
+.cookie-container a {
+  color: #f5f6fa;
+}
+.cookies_block {
+  text-align: center;
+  width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  @media (min-width: 768px) {
+    width: 700px;
+  }
+  @media (min-width: 1200px) {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  p {
+    color: #ffffff;
+    font-size: 12px;
+    a {
+      color: #f2c2c6;
+    }
+    @media (min-width: 768px) {
+      font-size: 15px;
+    }
+  }
+}
+
+.btn_cookies {
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cookie-btn {
+  border: solid #001838 2px;
+  color: #001838;
+  background-color: #ffffff;
+  padding: 12px 48px;
+  font-size: 18px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+  cursor: pointer;
+  margin-right: 20px;
+  margin-left: 10px;
+  &:hover {
+    background: #d8e8ff;
+    color: #001838;
+  }
+}
+.information {
+  margin-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  text-align: left;
+  @media (min-width: 768px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    text-align: justify;
+  }
+  @media (min-width: 1200px) {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1200px;
+    text-align: justify;
+  }
+}

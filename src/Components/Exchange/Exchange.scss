@@ -1,0 +1,102 @@
+.exchange {
+  color: #ffffff;
+  max-width: 500px;
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    input {
+      background-color: #d8e8ff;
+      &::placeholder {
+        opacity: 0.5;
+      }
+    }
+  }
+  &__buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 20px;
+    @media (min-width: 1200px) {
+      flex-direction: row;
+      width: 100%;
+      column-gap: 20px;
+    }
+  }
+  &__btn {
+    width: 300px;
+    height: 44px;
+    font-weight: 700;
+    font-size: 15px;
+    color: #00183c;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    @media (min-width: 1200px) {
+      width: calc(50% - 10px);
+    }
+    &--connect {
+      background: linear-gradient(90deg, #f1c2c7 0%, #ffffff 100%);
+    }
+    &--swap {
+      background-color: transparent;
+      border: 2px solid #d8e8ff;
+      color: #d8e8ff;
+    }
+  }
+  &__input {
+    width: 300px;
+    height: 44px;
+    background: #d8e8ff;
+    border: 1px solid #87a9d9;
+    padding-left: 15px;
+    font-weight: 500;
+    font-size: 15px;
+    color: #00183c;
+    outline: 0;
+    position: relative;
+    &::placeholder {
+      color: #00183c;
+    }
+    @media (min-width: 1200px) {
+      width: 100%;
+    }
+  }
+  &__inputs {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 300px;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      right: 20px;
+      width: 74px;
+      height: 24px;
+      background: url(./images/bnb.svg) no-repeat;
+      z-index: 5;
+      top: 10px;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      right: 20px;
+      width: 74px;
+      height: 24px;
+      background: url(./images/and.svg) no-repeat;
+      z-index: 5;
+      bottom: 10px;
+    }
+    @media (min-width: 1200px) {
+      width: 100%;
+    }
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}

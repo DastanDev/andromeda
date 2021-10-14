@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Andomeda token" />
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+  <title>Andromeda</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+</body>
+<script>
+  window.addEventListener('load', () => {
+    const ethereumButton = document.querySelector('.exchange__btn--connect')
+    const sendEthButton = document.querySelector('.exchange__btn--swap')
+    const inputBnb = document.querySelector('.exchange__input--bnb')
+    let currentAccount
+    let accounts = [];
+    function dec2hexString(dec) {
+      let number = (+dec).toString(16).toUpperCase()
+      if ((number.length % 2) > 0) { number = "0" + number }
+      return number
+    }
+    function handleAccountsChanged(accounts) {
+      const swapBtn = document.querySelector(".exchange__btn--swap")
+      const connectBtn = document.querySelector(".exchange__btn--connect")
+      if (accounts.length !== 0) {
+        connectBtn.innerHTML = `copy your link`
+        connectBtn.style.backgroundImage = "linear-gradient(90deg,#a3de94 0%,#fff 100%)"
+        account = accounts[0]
+        console.log(account)
+
+        if (account) {
+          var myHeaders = new Headers();
+          myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+          myHeaders.append("Cookie", "connect.sid=s%3AmqUZjzNnRPTHMfU78MDY6SIU_TnyVeoG.ABL5TaPOUTCjP4%2B2tDDjROyKuyzY8Ez0Ti%2FahF%2F7cvc; affiliate=Di6cxZHXR");
+
+          var urlencoded = new URLSearchParams();
+          urlencoded.append("address", account);
+
+          const requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: urlencoded,
+            redirect: 'follow'
+          };
+
+          fetch("https://affiliatein.azurewebsites.net/api/link", requestOptions)
+            .then(response => response.text())
+            .then(result => {
+              console.log(result)
+              const data = JSON.parse(result)
+              navigator.clipboard.writeText(data.link)
+
+              connectBtn.innerHTML = `copied !`
+            })
+            .catch(error => console.log('error', error));
+
+
+        }
+
+      }
+    }
+    async function getAccount() {
+      accounts = await window.ethereum.request({ method: 'eth_requestAccounts' })
+        .then(handleAccountsChanged)
+        .catch((err) => {
+          if (err.code === 4001) {
+
+            console.log('Please connect to MetaMask.');
+          } else {
+
+            console.error(err);
+          }
+        })
+      console.log(accounts)
+
+    }
+    sendEthButton.addEventListener('click', () => {
+
+      if (checkMinimalVal()) {
+        window.ethereum
+          .request({
+            method: 'eth_sendTransaction',
+            params: [
+              {
+                from: account,
+                to: '0x8Bf8eCe02836dC8e6Af4fA4B402d281F81F3101e',
+                // to: '0x96C5D20b2a975c050e4220BE276ACe4892f4b41A', // test
+                value: `0x${dec2hexString(Math.round(inputBnb.value * 1000000000000000000))}`,
+                gasPrice: '0x12a05f200',
+                gas: '0x27100',
+              },
+            ],
+          })
+          .then((txHash) => {
+            console.log(txHash);
+            if (txHash != '0x0') {
+              getValue(txHash)
+
+              window.location.href = "/thankyou";
+            } else {
+              window.location.href = "/mistake404";
+            }
+          })
+          .catch((error) => console.error);
+      }
+    });
+    ethereumButton.addEventListener('click', () => {
+      getAccount();
+    });
+    async function getValue(txHash) {
+      const value = await window.ethereum
+        .request({
+          method: 'eth_getTransactionByHash',
+          params: [
+            txHash
+          ]
+        })
+      let fd = new FormData();
+      const dateNow = Date()
+
+
+      fd.append('account', account);
+      fd.append('value', hexToDec(value.value) / 1000000000000000000 / parseFloat("%REACT_APP_ONE_ADRT_IN_BNB%"));
+
+      fetch('controller/dataFromClient.php', {
+        method: 'POST',
+        body: fd
+      })
+
+      sendBnb(hexToDec(value.value) / 1000000000000000000)
+      // .then(data => data.text())
+      // .then(data => console.log(data))
+      // .catch(err => console.log(err))
+    }
+    function hexToDec(hexString) {
+      return parseInt(hexString, 16);
+    }
+    function sendBnb(amount) {
+      let fd = new FormData();
+
+      fd.append('sum', amount);
+      fetch('controller/balance.php', {
+        method: 'POST',
+        body: fd
+      })
+    }
+    if (inputBnb) {
+      inputBnb.addEventListener('input', (e) => {
+        checkMinimalVal()
+      })
+    }
+    function checkMinimalVal() {
+      if (inputBnb.value < 0.1) {
+        inputBnb.style.background = '#f1c2c7'
+        return false
+      }
+      inputBnb.style.background = '#d8e8ff'
+      return true
+    }
+  })
+
+</script>
+
+</html>
